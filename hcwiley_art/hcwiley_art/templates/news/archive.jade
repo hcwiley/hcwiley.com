@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .col-sm-10
+    h1.pull-right archive
+  .col-sm-12
+    {% for article in news %}
+    .col-sm-2
+        a(href='#{article.get_absolute_url()}') #{article.name}
+          p #{article}
+          img(src="#{article.thumb()}")
+    {% endfor %}

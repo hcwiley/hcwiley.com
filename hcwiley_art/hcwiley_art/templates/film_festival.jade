@@ -1,0 +1,81 @@
+extends layout
+
+block content
+  .row
+    .col-sm-10
+      h1.pull-right digital native
+    .col-sm-3.col-sm-offset-2
+      h3 Saturday, April 11th
+      h3 7pm - 10pm
+  .row
+    .col-sm-8.col-sm-offset-2
+      hr.dashed
+      strong The Front invites video artists to submit short videos, ten minutes or less, to our shorts film festival, Digital Native. 
+      br
+      h3 Theme:
+      p At a time when digital technologies are evolving rapidly and analog processes are slipping into obscurity, the possibility for re-invention in image making is ripe. We are looking for artists working in video who explore the concepts of mistranslations, glitches, and failures when combining new and old technical methods.
+      p 
+      h3 Important Dates:
+      ul
+        li Submission Deadline: January 2nd, 2015
+        li Notification of Selected Videos: March 1st, 2015
+        li Deadline for selected artists to send us video files: March 11th, 2015
+        li Film Festival: April 11th, 2015, 7pm
+      p 
+      h3 Jurors:
+      ul
+        p Cristina Molina
+        p Imen Djouini
+        p Ryn Wilson
+        p Lee Deigaard
+      p 
+      h3 Entry Fee:
+      p $5 to cover operating costs (including advertising/PR)
+      p 
+      h3 How to Submit:
+      ul
+        li Fill out <a class='accent' href='#entry-form'><strong>entry form</strong></a> below
+        li Pay the $5 entry fee <a class='accent' href='#entry-form'><strong>via Paypal</strong></a> below
+      p 
+      h3 If your video is selected: 
+      ul
+        li Videos should be sent electronically via wetransfer.com or dropbox.com in the best possible quality for screening.
+        li When your upload is complete, send us your link for download at nolafront@gmail.com with the subject line "Digital Native Film Festival Submission."
+        li Accepted formats: .avi, .mov, .mpeg, .mp4
+      p 
+      p 
+      h3 Copyright Release:
+      p By submitting the entry form, you accept the festival's regulations:
+      ul
+        li Presentation of the submitted video at the Digital Native shorts film festival, 2015
+        li Presentation of the proposed video (or part of it) on The Front's website, www.nolafront.org 
+        li Publication of video stills extracted from the video in festival printed material, the festival's website and press media
+        li Publication of the texts enclosed to the proposal (synopsis, artist info, etc.)
+  .row
+    .col-sm-8.col-sm-offset-2
+      br
+      br
+  .row
+    .col-sm-8.col-sm-offset-2
+      iframe(src="https://docs.google.com/forms/d/1sAWyDWKgKex4ufFcqG0Ocsfe01bZDKQVjKRaOhi8VfI/viewform?embedded=true", width="100%", height="1190", frameborder="0", marginheight="0", marginwidth="0", id='entry-form')
+        p Loading...
+  .row
+    .col-sm-10.col-sm-offset-1
+      br
+      br
+  .row
+    #entry-fee.col-sm-6.col-sm-offset-3
+      form(action="https://www.paypal.com/cgi-bin/webscr", method="post", target="_top")
+        input(type="hidden", name="cmd", value="_s-xclick")
+        input(type="hidden", name="hosted_button_id", value="MEQZ6733S8GHL")
+        button.btn.btn-lg.btn-block.bg-accent.white
+          | Pay Entry Fee
+        img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+        img(alt="", border="0", src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif", width="1", height="1")
+  .row
+    .col-sm-10.col-sm-offset-1
+      hr.dotted
+      br
+  .row
+    .col-sm-8.col-sm-offset-2
+      img(width='100%', height='auto', src='#{STATIC_URL}img/digital-natives-flyer.jpg')

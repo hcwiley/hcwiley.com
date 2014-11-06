@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  .row
+    .col-xs-12.visible-xs
+      br
+      br
+  .row
+    .col-sm-12.text-center
+      h3 H. Cole Wiley
+      h5 sculptor &amp; digital menace
+  .row
+    .col-sm-12.text-center
+      br
+  .row
+    .col-sm-10.col-sm-offset-1
+      .col-sm-4
+        h3 artists
+        //-hr.dashed
+        {% for artist in artists %}
+        a(href='#{artist.get_absolute_url()}')
+          .col-sm-12.artist-name-image.col-xs-4(style="background-image: url('#{artist.thumb()}')")
+            p #{artist.name|lower}
+        {% endfor %}
+      .col-sm-6.col-sm-offset-2.text-right
+        .row
+          .col-sm-12
+            br
+            br
+        .row
+          .visible-xs
+            br
+            br
+            br
+        .row
+          .col-sm-12
+            hr.dashed
+        h3.text-right shows
+        //-hr.dashed
+        {% for article in news %}
+        .row
+          .col-xs-12
+            a(href='#{article.get_absolute_url()}')
+              h4 #{article.name|lower}
+              {% if forloop.first %}
+              p #{article.artists_info|truncatewords:30}
+              {% else %}
+              p #{article.artists_info|truncatewords:10}
+              {% endif %}
+              .col-xs-4.pull-right
+                img.img-thumbnail(src="#{article.thumb()}")
+        {% if not forloop.last %}
+        .row
+          .col-sm-12
+            hr.dashed
+        {% endif %}
+        {% endfor %}
+        .row
+          br

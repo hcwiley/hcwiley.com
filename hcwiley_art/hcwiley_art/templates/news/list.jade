@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .row
+    .col-sm-10
+      h1.pull-right shows
+  .row
+    .col-sm-12
+      br
+  .row
+    .col-sm-10.col-sm-offset-1
+      {% for article in news %}
+      .col-sm-2.artist-block
+          a(href='#{article.get_absolute_url()}')
+            p #{article.name}
+            img.img-thumbnail(src="#{article.thumb()}")
+      {% endfor %}

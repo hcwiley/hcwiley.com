@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .row
+    .col-sm-10
+      h1.pull-right artists
+  .row
+    .col-sm-12
+      br
+  .row
+    .col-sm-12
+      {% for artist in artists %}
+      .col-sm-4.artist-block
+        a(href='#{artist.get_absolute_url()}')
+          p.text-center #{artist}
+          img.md-thumbnail.img-thumbnail(src="#{artist.thumb()}")
+      {% endfor %}

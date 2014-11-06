@@ -1,0 +1,80 @@
+extends layout
+
+block content
+  #enlarged.modal.fade(data-keyboard='true')
+    .modal-content
+      .modal-header
+        button.pull-right.close(type='button', data-dismiss='modal',aria-hidden="true")
+          span.glyphicon.glyphicon-remove
+        h4.name
+      .modal-body
+        .img
+        .info
+
+  .row
+    .col-sm-10.col-sm-offset-1
+      .row.sm-text-center.artist-title
+        .col-sm-6
+          h2 #{artist.name}
+          {% if artist.cv %}
+          a(href='#{artist.cv_link()}', target="_blank", download='#{artist.cv_name()}')
+            h4 cv &nbsp;
+              span.glyphicon.glyphicon-cloud-download
+          {% endif %}
+        .col-sm-3
+          br
+          a(href='mailto:#{artist.email}', target="_blank")
+            h4.accent #{artist.email}
+          a(href='#{artist.web()}', target="_blank")
+            h4.accent #{artist.website}
+        .col-sm-3.text-right
+          br
+          {% if artist.bio %}
+          a(href='#', data-toggle='collapse', data-target="#bio")
+            h4 bio
+          {% endif %}
+          {% if artist.artist_statement %}
+          a(href='#', data-toggle='collapse', data-target="#statement")
+            h4 statement
+          {% endif %}
+      .row
+        #bio.col-sm-10.col-sm-offset-1.collapse
+          h3 bio
+          p=artist.bio
+        #statement.col-sm-10.col-sm-offset-1.collapse
+          h3 artist statement
+          p=artist.artist_statement
+  .row
+    .col-sm-12
+      hr
+  .row
+    .col-sm-10.col-sm-offset-1
+      {% for media in artist_media %}
+      .row
+        .col-sm-3
+          .row
+            .col-sm-12
+              h4.italic #{media.name}
+              br
+          .row.info
+            .col-xs-offset-3
+              p.short.small #{media.dimensions}
+              p.short.small #{media.medium}
+              p.short.small #{media.year}
+        {% if media.video_link %}
+        .col-sm-8.col-sm-offset-1.video-block
+          {% autoescape off %}
+          #{media.video}
+          {% endautoescape %}
+        {% else %}
+        .col-sm-8.col-sm-offset-1.enlarge(style="background-image: url('#{media.img()}');", data-dimensions="#{media.dimensions}", data-medium="#{media.medium}", data-year="#{media.year}", data-name='#{media.name}', data-full='#{media.full_res()}')
+          img.invisible.img-thumbnail.lg-thumbnail(src="#{media.img()}", data-dimensions="#{media.dimensions}", data-medium="#{media.medium}", data-year="#{media.year}", data-name='#{media.name}', data-full='#{media.full_res()}')
+        {% endif %}
+        {% if not forloop.last %}
+        .row
+          .col-sm-8.col-sm-offset-2
+            br
+            hr.dashed.lightGray
+            br
+        {% endif %}
+      {% endfor %}

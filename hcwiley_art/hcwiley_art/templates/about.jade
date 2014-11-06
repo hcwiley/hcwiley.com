@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  .row
+    .col-sm-10.col-sm-offset-1.text-right
+      h1 about
+    .col-sm-6.col-sm-offset-3
+      h3.text-center mission
+      p=info.about
+  .row
+    br
+    .col-sm-6.col-sm-offset-3
+      include donate_button
+      br
+    .row
+      .col-sm-6.col-sm-offset-3
+        hr.dashed.lightGray
+    br
+  .row
+    .col-sm-4.col-sm-offset-2
+      h3 front members
+      {% for artist in artists %}
+      .col-sm-12
+        a(href='#{artist.get_absolute_url()}') #{artist.name}
+      {% endfor %}
+    .col-sm-5.text-center
+      img.img-thumbnail(src="#{STATIC_URL}img/TheFront.jpg")
+      .col-sm-8.col-sm-offset-2
+        br
+        hr.dashed
+        br
+      a(href='#{STATIC_URL}img/floor_plan.pdf', target='_blank', title='Download floorplan pdf')
+        img.img-thumbnail(src="#{STATIC_URL}img/floor_plan.png")
+        p.accent.small.italic click to download floorplan
+  .row
+    br
+    br
+  .row
+    .col-sm-8.col-sm-offset-2
+      a(href='#faqs', data-toggle='collapse', data-target="#faqs")
+        h3.text-center FAQ About How The Front Works
+    #faqs.col-sm-8.col-sm-offset-2.collapse
+      {% for faq in faqs %}
+      .row
+        .col-xs-12
+          h5 #{faq.topic}:
+          p=faq.answer
+      {% if not forloop.last %}
+      .row
+        .col-xs-4.col-xs-offset-4
+          hr.dashed
+      {% endif %}
+      {% endfor %}

@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  .row
+    .col-sm-10.col-sm-offset-1
+      .col-sm-6.pull-right.text-right
+        h1 links
+      .col-sm-5
+        br
+        br
+        .col-xs-2.col-sm-3
+          a(href='https://twitter.com/TheFrontNOLA')
+            img(src='#{STATIC_URL}img/twitter-black.png', width='32px', height='32px')
+        .col-xs-2.col-sm-3
+          a(href='http://www.facebook.com/pages/The-Front/103934003034459')
+            img(src='#{STATIC_URL}img/facebook-black.png', width='32px', height='32px')
+  .row
+     br
+     br
+  .row
+    .col-sm-10.col-sm-offset-1
+      {% for link in links %}
+      {% if forloop.counter0|divisibleby:"3" %}
+      .row.hidden-xs
+        .col-sm-12
+          br
+      {% endif %}
+      .col-sm-4.link-div.text-center
+        a(href='#{link.url}', target='_blank')
+          h4 #{link.name}
+      {% if forloop.counter|divisibleby:"3" %}
+      {% if not forloop.last %}
+      .row.hidden-xs
+        .col-sm-12
+          br
+          br
+          br
+        .col-sm-12
+          hr.dashed.lightGray
+      {% endif %}
+      {% endif %}
+      {% endfor %}

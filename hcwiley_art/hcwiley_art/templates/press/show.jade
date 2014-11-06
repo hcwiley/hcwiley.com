@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  .col-sm-10.col-sm-offset-1
+    h2 #{press.name} (#{press.date})
+    {% autoescape off %}
+    #{press.content}
+    {% endautoescape %}
+  .row
+    .col-sm-10.col-sm-offset-1
+      br
+      hr
+      br
+  .row
+    {% for link in press.presslink_set.all %}
+    a(href="#{link.url}", target='_blank')
+      h4.text-center #{link.url}
+      br
+      .col-xs-10.col-xs-offset-1
+        iframe.white-shadow(width='100%', height='500px', src="#{link.url}")
+    {% endfor %}
+  .row
+    .col-sm-10.col-sm-offset-1
+      hr.dashed
+  .row
+    .col-sm-10.col-sm-offset-1
+      .col-sm-4.pull-right
+        {% for image in press_images %}
+        img.img-thumbnail(src="#{image.thumb()}", title="#{image.name}")
+        {% endfor %}

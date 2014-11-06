@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .col-sm-10
+    h1.pull-right news
+  .col-sm-12
+    {% for article in press %}
+    .row
+      .col-sm-8.col-sm-offset-2
+        a(href='#{article.get_absolute_url()}')
+          .col-sm-8
+            p #{article}
+          .col-sm-3.col-sm-offset-1
+            img.img-thumbnail(src="#{article.thumb()}")
+    {% if not forloop.last %}
+    .row
+      .col-sm-8.col-sm-offset-2
+        hr
+    {% endif %}
+    {% endfor %}
