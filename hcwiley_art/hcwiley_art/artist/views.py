@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, redirect
 from django.conf import settings
 from django.core.context_processors import csrf
 from artist.models import *
-from the_front.views import common_args
+from hcwiley_art.views import common_args
 
 def home(req):
   args = common_args(req)

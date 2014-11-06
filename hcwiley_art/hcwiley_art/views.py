@@ -23,7 +23,8 @@ def common_args(request):
 
 def home(req):
   args = common_args(req)
-  args['artists'] = Artist.objects.all()
+  artist = args['artist'] = Artist.objects.all()[0]
+  args['medias'] = ArtistMedia.objects.filter(artist=artist)
   args['news'] = NewsArticle.objects.all()[:5]
   return render_to_response("index.jade", args)
   

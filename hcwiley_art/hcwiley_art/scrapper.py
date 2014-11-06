@@ -1,6 +1,6 @@
 from pyquery import PyQuery
 import urllib, cStringIO
-from front_material.models import *
+from media_material.models import *
 from datetime import datetime
 from django.core.files.images import ImageFile
 from django.conf import settings

@@ -9,6 +9,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-     url(r'^$', 'front_material.press.views.home', name='home'),
-     url(r'^/[\d]+-[\d]+-[\d]+-(?P<pk>.*)$', 'front_material.press.views.press'),
+     url(r'^$', 'media_material.press.views.home', name='home'),
+     url(r'^/[\d]+-[\d]+-[\d]+-(?P<pk>.*)$', 'media_material.press.views.press'),
 )

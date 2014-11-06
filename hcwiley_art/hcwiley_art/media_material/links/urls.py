@@ -9,5 +9,5 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-     url(r'^$', 'front_material.links.views.home', name='home'),
+     url(r'^$', 'media_material.links.views.home', name='home'),
 )

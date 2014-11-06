@@ -2,8 +2,8 @@ from django.shortcuts import render_to_response, redirect
 #from django.http import Http404
 from django.conf import settings
 from django.core.context_processors import csrf
-from front_material.models import Link, PressLink
-from the_front.views import common_args
+from media_material.models import Link, PressLink
+from hcwiley_art.views import common_args
 
 def home(req):
   args = common_args(req)
