@@ -11,14 +11,12 @@ def home(req):
   args['artists_images'] = ArtistMedia.objects.all()
   return render_to_response("artist/list.jade", args)
 
-def artist(req, slug):
+def category(req, slug):
   args = common_args(req)
-  artist = Artist.objects.filter(slug=slug)
-  if len(artist) == 0:
-    args['error'] = 'No artist found'
+  category = ArtistMediaCategory.objects.filter(slug=slug)
+  if len(category) == 0:
+    args['error'] = 'No category found'
     return render_to_response("error.jade", args)
-  artist = artist[0]
-  args['artist'] = artist
-  args['artist_media'] = ArtistMedia.objects.filter(artist=artist)
+  args['category_media'] = ArtistMedia.objects.filter(category=category)
   return render_to_response("artist/show.jade", args)
 

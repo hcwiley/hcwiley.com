@@ -3,7 +3,6 @@ from django.shortcuts import render_to_response, redirect
 from django.conf import settings
 from django.core.context_processors import csrf
 from artist.models import *
-from media_material.models import NewsArticle, FrontInfo, FAQ
 
 def common_args(request):
     """
@@ -18,28 +17,22 @@ def common_args(request):
                 'user' : user,
                 'PAGE_TITLE' : 'The Front',
            }
+    artist = args['artist'] = Artist.objects.all()[0]
+    categories = args['categories'] = ArtistMediaCategory.objects.all()
+    args['medias'] = {}
+    for category in categories:
+      args['medias'][category.name] = ArtistMedia.objects.filter(category=category)[:3]
     args.update(csrf(request))
     return args
 
 def home(req):
   args = common_args(req)
-  artist = args['artist'] = Artist.objects.all()[0]
-  args['medias'] = ArtistMedia.objects.filter(artist=artist)
-  args['news'] = NewsArticle.objects.all()[:5]
   return render_to_response("index.jade", args)
   
 def contact(req):
   args = common_args(req)
   return render_to_response("contact.jade", args)
 
-def fundraiser(req):
-  args = common_args(req)
-  return render_to_response("fundraiser.jade", args)
-  
-def film_festival(req):
-  args = common_args(req)
-  return render_to_response("film_festival.jade", args)
-  
 def success(req):
   args = common_args(req)
   return render_to_response("success.jade", args)

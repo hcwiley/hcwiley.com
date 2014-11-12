@@ -2,6 +2,10 @@ from artist.models import *
 from django.contrib import admin
 from django_admin_bootstrapped.admin.models import SortableInline
 
+
+class ParentMediaAdmin(admin.ModelAdmin):
+  model = ParentMedia
+
 class ArtistMediaInlineSort(admin.StackedInline, SortableInline):
   model = ArtistMedia
   fields = ['position']
@@ -24,10 +28,19 @@ class ArtistMediaAdmin(admin.ModelAdmin):
   actions = [generate_thumbnails]
 
 class ArtistAdmin(admin.ModelAdmin):
+  model = Artist
   inlines = [
     ArtistMediaInline,
     ArtistMediaInlineSort,
   ]
 
+class ArtistMediaCategoryAdmin(admin.ModelAdmin):
+  model = ArtistMediaCategory
+  inlines = [
+    ArtistMediaInlineSort,
+  ]
+
 admin.site.register(Artist, ArtistAdmin)
+admin.site.register(ParentMedia, ParentMediaAdmin)
 admin.site.register(ArtistMedia, ArtistMediaAdmin)
+admin.site.register(ArtistMediaCategory, ArtistMediaCategoryAdmin)

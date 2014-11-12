@@ -180,7 +180,6 @@ INSTALLED_APPS = (
     'pipeline',
     'south',
     'artist',
-    'media_material',
 )
 
 TINYMCE_DEFAULT_CONFIG = {

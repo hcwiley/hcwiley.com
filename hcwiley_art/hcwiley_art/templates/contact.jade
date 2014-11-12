@@ -3,20 +3,32 @@ extends layout
 block content
   .row
     .col-sm-10.col-sm-offset-1.text-right
-      h1 contact
+      h3 H. Cole Wiley
+      h5 sculptor &amp; digital menace
       br
       br
     .col-md-10.col-md-offset-1.text-right
-      .col-sm-5.pull-right
-        h4 email us
-        a(href='mailto:nolafront@gmail.com')
-          h5 nolafront@gmail.com
-        .row
-          .col-sm-10.pull-right
-            br
-            include donate_button
-            .visible-xs.visible-sm
+        .col-sm-5.pull-right
+          .row
+            a(href='mailto:artist@hcwiley.com')
+              h4 artist@hcwiley.com
+          if artist.cv
+            a(href='#{artist.cv_link()}', target='_blank', download='#{artist.cv_name()}')
+              h4 download cv &nbsp;
+                span.glyphicon.glyphicon-cloud-download
+          if artist.head_shot
+            .row
               br
-      .col-md-7
-        iframe(style='float:left;', width="100%", height="400", frameborder="0", scrolling="no", marginheight="0", marginwidth="0", src="http://maps.google.com/maps?f=q&amp;hl=en&amp;geocode=&amp;q=4100+St.+Claude+Avenue,+New+Orleans,+LA&amp;sll=29.953075,-90.064201&amp;sspn=0.009593,0.013711&amp;ie=UTF8&amp;ll=29.976498,-90.030212&amp;spn=0.019184,0.027423&amp;z=14&amp;output=embed&amp;s=AARTsJpwK_HK2ezd9VKG0I2D-El3LMIkTA&style=saturation:-100")
-
+              br
+              img.img-thumbnail(src='#{artist.head_shot.img()}')
+        .col-sm-5.pull-left
+          if artist.bio
+            .row
+                h3.accent bio
+                hr
+                p.text-left=artist.bio
+          if artist.artist_statement
+            .row
+                h3.accent artist statement
+                hr
+                p.text-left=artist.artist_statement

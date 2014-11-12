@@ -14,8 +14,17 @@ block content
       br
   .row
     .col-sm-10.col-sm-offset-1
-      {% for media in medias %}
-      .col-sm-4.artist-block
-        a(href='#{artist.get_absolute_url()}')
-          img.md-thumbnail.img-thumbnail(src="#{media.thumb()}")
+      {% for category in categories %}
+      a(href='#{category.get_absolute_url()}')
+        .row
+          .col-sm-3
+            h4 #{category.name}
+          for media in category.medias|slice:":3"
+            .col-sm-3.artist-block
+                img.md-thumbnail.img-thumbnail(src="#{media.thumb()}")
+      if not forloop.last
+        .visible-xs
+          br
+          hr.dashed
+          br
       {% endfor %}

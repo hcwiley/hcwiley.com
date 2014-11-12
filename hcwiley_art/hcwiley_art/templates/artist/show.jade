@@ -13,43 +13,7 @@ block content
 
   .row
     .col-sm-10.col-sm-offset-1
-      .row.sm-text-center.artist-title
-        .col-sm-6
-          h2 #{artist.name}
-          {% if artist.cv %}
-          a(href='#{artist.cv_link()}', target="_blank", download='#{artist.cv_name()}')
-            h4 cv &nbsp;
-              span.glyphicon.glyphicon-cloud-download
-          {% endif %}
-        .col-sm-3
-          br
-          a(href='mailto:#{artist.email}', target="_blank")
-            h4.accent #{artist.email}
-          a(href='#{artist.web()}', target="_blank")
-            h4.accent #{artist.website}
-        .col-sm-3.text-right
-          br
-          {% if artist.bio %}
-          a(href='#', data-toggle='collapse', data-target="#bio")
-            h4 bio
-          {% endif %}
-          {% if artist.artist_statement %}
-          a(href='#', data-toggle='collapse', data-target="#statement")
-            h4 statement
-          {% endif %}
-      .row
-        #bio.col-sm-10.col-sm-offset-1.collapse
-          h3 bio
-          p=artist.bio
-        #statement.col-sm-10.col-sm-offset-1.collapse
-          h3 artist statement
-          p=artist.artist_statement
-  .row
-    .col-sm-12
-      hr
-  .row
-    .col-sm-10.col-sm-offset-1
-      {% for media in artist_media %}
+      {% for media in category_media %}
       .row
         .col-sm-3
           .row

@@ -21,12 +21,9 @@ html(lang="en")
             span.icon-bar
         #bs-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li.brand
-              a(href='/sculpture') sculpture
-            li.brand
-              a(href='/installation') installation
-            li.brand
-              a(href='/two dimensional') two dimensional
+            for category in categories
+              li.brand
+                a(href='/#{category.slug}') #{category.name}
             li.brand
               a(href='/contact') contact
     #content.container
@@ -37,29 +34,8 @@ html(lang="en")
           .text-center.links
             li.brand
               a(href='/') home
-            li.brand
-              a(href='/artists') artists
-            li.brand
-              a(href='/shows') shows
-            li.brand
-              a(href='/about') about
-            li.brand
-              a(href='/press') news
-            li.brand
-              a(href='/links') links
+            for category in categories
+              li.brand
+                a(href='/#{category.slug}') #{category.name}
             li.brand
               a(href='/contact') contact
-        .row
-          .col-sm-12
-            .info
-              p The Front • 4100 St. Claude Avenue • New Orleans, LA 70117 • Saturday & Sunday 12 to 5 pm
-        .row
-          .col-sm-6.col-sm-offset-3
-            include donate_button
-        .row
-          br
-          .social
-            a(href='https://twitter.com/TheFrontNOLA')
-              img(src='#{STATIC_URL}img/twitter-black.png')
-            a.pull-right(href='http://www.facebook.com/pages/The-Front/103934003034459')
-              img(src='#{STATIC_URL}img/facebook-black.png')

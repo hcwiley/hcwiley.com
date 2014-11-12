@@ -9,6 +9,5 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-     url(r'^$', 'artist.views.home', name='home'),
-     url(r'^/(?P<slug>.*)$', 'artist.views.artist'),
+     url(r'^(?P<slug>.*)$', 'artist.views.category'),
 )
