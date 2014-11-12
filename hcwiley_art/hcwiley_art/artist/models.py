@@ -13,6 +13,11 @@ class ParentMedia(models.Model):
   full_res_image = models.ImageField(upload_to='artist_media/', default="", null=False, blank=False)
   is_default_image = models.BooleanField(default=False)
 
+  class Meta:
+    ordering = ['name']
+    verbose_name = u'All media'
+    verbose_name_plural = u'All media'
+
   def __unicode__(self):
     return self.name
 
@@ -170,6 +175,8 @@ class ArtistMediaCategory(models.Model):
 
   class Meta:
     ordering = ['position']
+    verbose_name = u'Category of Art'
+    verbose_name_plural = u'Categories of Art'
   
   def __unicode__(self):
     return self.name
@@ -199,6 +206,7 @@ class ArtistMedia(ParentMedia):
   artist = models.ForeignKey(Artist)
   category = models.ForeignKey(ArtistMediaCategory)
   position = models.PositiveSmallIntegerField("Position", default=1)
+  description = models.TextField(blank=True, null=True, default="")
   dimensions = models.CharField(max_length=100, blank=True, null=True, default="")
   medium = models.CharField(max_length=100, blank=True, null=True, default="")
   year = models.CharField(max_length=4, blank=True, null=True, default="")
@@ -206,12 +214,16 @@ class ArtistMedia(ParentMedia):
   
   class Meta:
     ordering = ('position', )
+    verbose_name = u'Piece'
+    verbose_name_plural = u'Pieces'
+
+  def __unicode__(self):
+    return self.name
 
   def save(self):
     self.aritst = Artist.objects.all()[0]
     super(ArtistMedia, self).save()
 
-'''
 class Link(models.Model):
   name = models.CharField(max_length=100, blank=False, null=False, default="")
   url = models.CharField(max_length=255, blank=True, null=True, default="")
@@ -252,4 +264,3 @@ class PressMedia(ParentMedia):
   press_article = models.ForeignKey(Press)
 class PressLink(Link):
   press_article = models.ForeignKey(Press)
-'''

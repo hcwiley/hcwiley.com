@@ -14,17 +14,21 @@ block content
   .row
     .col-sm-10.col-sm-offset-1
       {% for media in category_media %}
-      .row
+      .row(id='#{media.name}')
         .col-sm-3
           .row
             .col-sm-12
-              h3.italic #{media.name}
+              a(href='##{media.name}')
+                h3.italic #{media.name}
               br
           .row.info
             .col-xs-offset-3
               p.short.small #{media.dimensions}
               p.short.small #{media.medium}
               p.short.small #{media.year}
+            if media.description
+              .col-xs-offset-1
+                p.short.small #{media.description}
         {% if media.video_link %}
         .col-sm-8.col-sm-offset-1.video-block
           {% autoescape off %}
@@ -37,7 +41,6 @@ block content
         if media.aux_images.count > 0
           .row
             .col-sm-12
-              br
               br
             .col-sm-8.col-sm-offset-4
               for img in media.aux_images.all

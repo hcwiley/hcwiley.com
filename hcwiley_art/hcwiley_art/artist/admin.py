@@ -15,8 +15,9 @@ class ArtistMediaInlineSort(admin.StackedInline, SortableInline):
 class ArtistMediaInline(admin.TabularInline):
   model = ArtistMedia
   exclude = ['position']
-  fields = ['name', 'video_link', 'full_res_image',
+  fields = ['name', 'video_link', 'admin_thumb', 'full_res_image',
       'is_default_image', 'dimensions', 'medium', 'year']
+  readonly_fields = ['admin_thumb']
 
 def generate_thumbnails(modeladmin, request, queryset):
   for obj in queryset:
@@ -29,14 +30,14 @@ class ArtistMediaAdmin(admin.ModelAdmin):
 
 class ArtistAdmin(admin.ModelAdmin):
   model = Artist
-  inlines = [
-    ArtistMediaInline,
-    ArtistMediaInlineSort,
-  ]
 
 class ArtistMediaCategoryAdmin(admin.ModelAdmin):
   model = ArtistMediaCategory
   inlines = [
+    ArtistMediaInlineSort,
+  ]
+  inlines = [
+    ArtistMediaInline,
     ArtistMediaInlineSort,
   ]
 
@@ -44,3 +45,5 @@ admin.site.register(Artist, ArtistAdmin)
 admin.site.register(ParentMedia, ParentMediaAdmin)
 admin.site.register(ArtistMedia, ArtistMediaAdmin)
 admin.site.register(ArtistMediaCategory, ArtistMediaCategoryAdmin)
+
+admin.site.register(Press)
