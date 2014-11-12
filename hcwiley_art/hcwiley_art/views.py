@@ -39,7 +39,7 @@ def success(req):
 
 def rotate(req, dirr, pk):
   if req.user.is_authenticated():
-    image = ArtistMedia.objects.filter(id=pk)[0]
+    image = ParentMedia.objects.filter(id=pk)[0]
     if dirr == 'left':
       image.left = True
     if dirr == 'right':

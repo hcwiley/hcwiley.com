@@ -4,7 +4,6 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 import datetime
-from media_material.models import FrontMedia
 
 class ParentMedia(models.Model):
   name = models.CharField(max_length=100, blank=False, null=False, default="")
@@ -31,6 +30,16 @@ class ParentMedia(models.Model):
       return self.image.height
     except:
       return ""
+
+  def admin_thumb(self):
+    html = ''
+    if self.thumbnail:
+      html += "<div class='col-xs-12'><div class='col-xs-6'><a class='btn btn-block btn-sm btn-success' href='/image/rotate/left/%s'>rotate left</a></div>"% (self.id)
+      html += "<div class='col-xs-6'><a class='btn btn-block btn-sm btn-danger' href='/image/rotate/right/%s'>rotate right</a></div></div>"% (self.id)
+      html += "<img src='%s'/>" % ( self.thumb())
+      return html
+    return ""
+  admin_thumb.allow_tags = True
 
 
   def video(self):
@@ -114,6 +123,7 @@ class Artist(models.Model):
   email = models.CharField(max_length=100, blank=True, null=True, default="")
   cv = models.FileField(upload_to='artist_media/', blank=True, null=True, default="")
   head_shot = models.ForeignKey(ParentMedia, blank=True, null=True)
+  cover_photo = models.ForeignKey(ParentMedia, blank=True, null=True, related_name='cover_photo')
 
   class Meta:
     ordering = ['name']
@@ -192,18 +202,10 @@ class ArtistMedia(ParentMedia):
   dimensions = models.CharField(max_length=100, blank=True, null=True, default="")
   medium = models.CharField(max_length=100, blank=True, null=True, default="")
   year = models.CharField(max_length=4, blank=True, null=True, default="")
+  aux_images = models.ManyToManyField(ParentMedia, related_name='aux_images', null=True, blank=True)
+  
   class Meta:
     ordering = ('position', )
-
-  def admin_thumb(self):
-    html = ''
-    if self.thumbnail:
-      html += "<div class='col-xs-12'><div class='col-xs-6'><a class='btn btn-block btn-sm btn-success' href='/image/rotate/left/%s'>rotate left</a></div>"% (self.id)
-      html += "<div class='col-xs-6'><a class='btn btn-block btn-sm btn-danger' href='/image/rotate/right/%s'>rotate right</a></div></div>"% (self.id)
-      html += "<img src='%s'/>" % ( self.thumb())
-      return html
-    return ""
-  admin_thumb.allow_tags = True
 
   def save(self):
     self.aritst = Artist.objects.all()[0]

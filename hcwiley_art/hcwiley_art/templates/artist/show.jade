@@ -18,7 +18,7 @@ block content
         .col-sm-3
           .row
             .col-sm-12
-              h4.italic #{media.name}
+              h3.italic #{media.name}
               br
           .row.info
             .col-xs-offset-3
@@ -34,11 +34,20 @@ block content
         .col-sm-8.col-sm-offset-1.enlarge(style="background-image: url('#{media.img()}');", data-dimensions="#{media.dimensions}", data-medium="#{media.medium}", data-year="#{media.year}", data-name='#{media.name}', data-full='#{media.full_res()}')
           img.invisible.img-thumbnail.lg-thumbnail(src="#{media.img()}", data-dimensions="#{media.dimensions}", data-medium="#{media.medium}", data-year="#{media.year}", data-name='#{media.name}', data-full='#{media.full_res()}')
         {% endif %}
+        if media.aux_images.count > 0
+          .row
+            .col-sm-12
+              br
+              br
+            .col-sm-8.col-sm-offset-4
+              for img in media.aux_images.all
+                .col-sm-3.artist-block
+                  img.img-thumbnail.enlarge(src='#{img.thumb()}', data-dimensions="#{media.dimensions}", data-medium="#{media.medium}", data-year="#{media.year}", data-name='#{media.name}', data-full='#{img.full_res()}')
         {% if not forloop.last %}
         .row
-          .col-sm-8.col-sm-offset-2
+          .col-sm-12
             br
-            hr.dashed.lightGray
+            hr.lightGray
             br
         {% endif %}
       {% endfor %}

@@ -45,7 +45,7 @@ a:hover {
   box-shadow: 0px 0px 35px rgba(0,0,0,0.3);
 }
 hr {
-  border-color: #666c01;
+  border-color: #888380;
 }
 hr.dashed {
   border-style: dashed;
@@ -59,10 +59,10 @@ hr.dashed {
   color: #fff;
 }
 .accent {
-  color: #666c01;
+  color: #888380;
 }
 .bg-accent {
-  background: #666c01;
+  background: #888380;
 }
 @media screen and (max-width: 768px) {
   .sm-text-center {
@@ -78,6 +78,20 @@ body {
   height: 100%;
   background: #fff;
 }
+.cover-photo {
+  height: 150px;
+  font-variant: small-caps;
+  background-repeat: no-repeat;
+  background-size: auto 700px;
+  background-position: 20% -210px;
+  background-color: #000;
+}
+.cover-photo * {
+  color: #fff;
+  text-shadow: 0px 0px 2px #000;
+  margin-top: 10px;
+  padding-top: 0px;
+}
 header.navbar {
   -webkit-box-shadow: 0px 3px 5px #444;
   -moz-box-shadow: 0px 3px 5px #444;
@@ -85,37 +99,12 @@ header.navbar {
   border-left: none;
   border-right: none;
   padding: 0px;
-  margin: 45px 0px 20px 0px;
+  margin: 5px 0px 20px 0px;
   height: 30px;
   width: 100%;
-  padding-left: 100px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-}
-header.navbar .logo-link {
-  display: inline-block;
-  background: #444;
-  margin-top: -22px;
-  height: 90px;
-  width: 160px;
-  -webkit-box-shadow: 0px 1px 5px #777;
-  -moz-box-shadow: 0px 1px 5px #777;
-  box-shadow: 0px 1px 5px #777;
-  font-variant: small-caps;
-  text-align: center;
-}
-header.navbar .logo-link * {
-  display: inline-block;
-}
-header.navbar .logo-link img {
-  border-bottom: 2px solid #666;
-}
-header.navbar .logo-link h1 {
-  color: #fff;
-  margin-top: 10px;
-  font-size: 34px;
-  padding-top: 0px;
 }
 header.navbar .navbar-collapse:not(.collapse) {
   background: #fff;
@@ -132,16 +121,16 @@ header.navbar nav.navbar {
   -moz-border-radius: 0px;
   border-radius: 0px;
   float: none;
-  margin: -56px auto 0px auto;
+  margin: 12px auto 0px auto;
   height: 30px;
-  width: 450px;
+  width: 435px;
 }
 header.navbar nav.navbar #border 1pxsolid black,
 header.navbar nav.navbar .navbar-header {
   margin-left: 160px;
 }
 header.navbar nav.navbar .navbar-toggle {
-  background: #666c01;
+  background: #888380;
   margin-top: -7px;
 }
 header.navbar nav.navbar span.icon-bar {
@@ -187,7 +176,7 @@ header.navbar .navbar-collapse {
   margin-top: -14px;
 }
 .brand a:hover {
-  background: #666c01 !important;
+  background: #888380 !important;
   color: #fff;
 }
 #content {
@@ -195,10 +184,9 @@ header.navbar .navbar-collapse {
   min-height: 65%;
 }
 footer {
-  background: #bbb;
   width: 100% !important;
   margin: 0px !important;
-  padding: 5px 0px 20px 0px !important;
+  padding: 5px 0px 0px 0px !important;
 }
 footer li.brand {
   font-weight: 100;
@@ -303,7 +291,7 @@ footer .info p {
 }
 .artist-block:hover p {
   font-weight: bolder;
-  color: #666c01;
+  color: #888380;
 }
 .artist-block:hover img {
   filter: url("filters.svg#grayscale");
@@ -335,6 +323,9 @@ div.enlarge {
   background-repeat: no-repeat;
   background-position: top center;
 }
+.enlarge:hover {
+  cursor: pointer;
+}
 #enlarged .modal-header {
   border: none;
   padding: 10px 30px;
@@ -350,8 +341,9 @@ div.enlarge {
   float: none;
 }
 #enlarged .modal-body {
-  height: 90%;
-  padding: 10px;
+  height: 100%;
+  padding: 0px;
+  margin: 30px 0px 0px 0px;
 }
 #enlarged .modal-body .img {
   height: 85%;
@@ -377,7 +369,7 @@ div.enlarge {
   font-size: 14px;
 }
 .donate-button:hover {
-  color: #666c01;
+  color: #888380;
   background: #fff;
   border: #ccc 1px solid;
 }

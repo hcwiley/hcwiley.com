@@ -8,10 +8,12 @@ html(lang="en")
     {% compressed_js 'client' %}
     link(rel='icon', type='image/x-icon', href='./images/fav.png')
   body
-    header.navbar
-      .logo-link
-        a(href='/')
+    .row
+      a(href='/')
+        .col-sm-8.col-sm-offset-1.text-left
           h1 H. Cole Wiley
+          h5 sculptor &amp; digital menace
+    header.navbar
       nav.navbar(role="navigation")
         .navbar-header
           button(type="button" ,class="navbar-toggle" ,data-toggle="collapse" ,data-target="#bs-navbar-collapse-1")
@@ -30,7 +32,7 @@ html(lang="en")
       block content
     footer.container
       .col-sm-12
-        .row
+        .row.cover-photo(style="background-image: url('#{artist.cover_photo.full_res()}');")
           .text-center.links
             li.brand
               a(href='/') home
